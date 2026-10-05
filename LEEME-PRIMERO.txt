@@ -1,0 +1,126 @@
+========================================================================
+  AGENTE DE ACTIVIDAD  -  Instalacion en el PC nuevo
+========================================================================
+
+Solo tres pasos. No hace falta nada mas.
+
+------------------------------------------------------------------------
+PASO 1.  Tener Python instalado
+------------------------------------------------------------------------
+El PC necesita Python 3.14 (64 bits). Para comprobarlo, abre una ventana
+de comandos (tecla Windows + R, escribe  cmd  y Enter) y escribe:
+
+    python --version
+
+  - Si dice "Python 3.14.x"  -> listo, pasa al PASO 2.
+  - Si se abre la Microsoft Store, o dice que no se reconoce el comando,
+    NO hay Python. Este paquete YA incluye el instalador, no hace falta
+    internet:
+
+      1) Doble clic en   python-manager-26.3.msix   e instalalo.
+      2) Cierra y vuelve a abrir la ventana de comandos, y escribe:
+             py install 3.14
+         (esto descarga Python 3.14; requiere internet UNA vez. Si el PC
+          no tiene internet, hay que llevar Python 3.14 ya instalado.)
+      3) Comprueba con:   py --version
+
+  Alternativa clasica (si prefieres el instalador de un solo paso): baja
+  "Windows installer (64-bit)" de la version 3.14 desde
+  https://www.python.org/downloads/windows/  y marca al instalar la
+  casilla  "Add python.exe to PATH".
+
+  (Si el PC ya tiene otra version de Python, tambien sirve: el instalador
+   del agente descargara de internet lo que necesite. Sin internet, hace
+   falta Python 3.14 exacto.)
+
+------------------------------------------------------------------------
+PASO 2.  Descomprimir esta carpeta
+------------------------------------------------------------------------
+Si abriste esto desde dentro del ZIP, primero descomprimelo:
+clic derecho sobre el ZIP  ->  "Extraer todo..."  ->  elige una carpeta
+sencilla, por ejemplo  C:\Agente
+
+IMPORTANTE: no ejecutes nada desde dentro del ZIP. Descomprime primero.
+
+------------------------------------------------------------------------
+PASO 3.  Ejecutar el instalador
+------------------------------------------------------------------------
+Doble clic en:   instalar.bat
+
+  - Si Windows muestra una pantalla azul (SmartScreen):
+    "Mas informacion"  ->  "Ejecutar de todas formas".
+  - Al final muestra que puede hacer el agente en este PC, y pregunta si
+    registrar las tareas programadas. Responde  S  (Si).
+
+Con eso quedan funcionando TRES cosas:
+  - Trabaja solo cada dia laboral (lunes a viernes): arranca a una hora
+    aleatoria entre las 8 y las 9, y termina a una hora aleatoria entre
+    las 5 y las 6 de la tarde. Distinta cada dia.
+  - Al terminar la jornada cierra todas las aplicaciones abiertas.
+  - Mantiene la PANTALLA ENCENDIDA las 24 horas (no se apaga ni se
+    suspende), aunque el agente solo "trabaje" en el horario.
+
+========================================================================
+  COMPROBAR QUE FUNCIONA (opcional)
+========================================================================
+Abre una ventana de comandos DENTRO de la carpeta (escribe  cmd  en la
+barra de direcciones del Explorador, estando en la carpeta) y prueba:
+
+    ejecutar.bat --prueba          (encadena 5 acciones ahora mismo)
+    ejecutar.bat --listar          (que puede y que no puede hacer aqui)
+    ejecutar.bat --plan            (el plan sorteado para hoy)
+    ejecutar.bat --simular-cierre  (que cerraria al final, sin cerrar nada)
+
+Para detenerlo mientras corre: Ctrl+C en su ventana, o lleva el raton a
+la esquina superior izquierda de la pantalla.
+
+========================================================================
+  IMPORTANTE SOBRE EL CIERRE
+========================================================================
+Tal como viene configurado, al terminar la jornada (17:00) el agente
+CIERRA TODAS las aplicaciones abiertas y NO GUARDA NADA: lo que tenga
+cambios sin guardar se pierde. Es lo que se pidio.
+
+Si algun dia quieres cambiarlo, abre  config.json  y busca
+"modo_cierre" / "forzar_cierre". Todo esta explicado en README.md.
+
+Para desinstalar: ejecuta  desinstalar.bat
+
+========================================================================
+  EL PC DEBE ESTAR DESBLOQUEADO
+========================================================================
+Con la pantalla BLOQUEADA, la actividad simulada (raton) y las
+herramientas de Office NO funcionan: Windows manda esas acciones a la
+pantalla de bloqueo, no a tu escritorio. Solo siguen la escritura de
+archivos y el cierre final.
+
+Por eso: deja el PC DESBLOQUEADO y con la sesion iniciada. La tarea de
+pantalla 24/7 mantiene el equipo despierto (no se apaga la pantalla ni se
+suspende) todo el tiempo, y en el horario los movimientos de raton
+evitan ademas el bloqueo automatico.
+
+Lo que si lo romperia: bloquearlo a mano (tecla Windows + L) al salir, o
+una politica de la empresa que fuerce el bloqueo. Para evitarlo, en ese
+PC (si es tuyo):
+  Configuracion > Cuentas > Opciones de inicio de sesion
+     "Si has estado ausente, cuando se requiere iniciar sesion" -> Nunca
+  Configuracion > Sistema > Energia   ->  pantalla y suspension en Nunca
+
+El agente NO puede desbloquear la pantalla solo (haria falta tu
+contrasena): eso se resuelve con esa configuracion o dejandolo
+desbloqueado tu.
+
+Para que la PANTALLA NO SE APAGUE ni el equipo se SUSPENDA (importante en
+portatiles con Modern Standby, donde no basta con "pedirlo"), el instalador
+pone el plan de energia en "nunca" con powercfg, y la vigilia lo re-aplica.
+Al desinstalar se restauran valores normales. Comprueba si un PC usa Modern
+Standby con:  powercfg /a  (busca "S0 Low Power Idle").
+
+La vigilia 24/7 pulsa una tecla inofensiva (F15) fuera del horario para
+que el equipo no se bloquee por inactividad. Si aun asi algun PC se
+bloquea (politica mas estricta), desactiva el bloqueo en Windows:
+  Configuracion > Cuentas > Opciones de inicio de sesion
+     "cuando se requiere iniciar sesion" -> Nunca
+  Protector de pantalla -> Ninguno (o desmarcar "Mostrar la pantalla de
+     inicio de sesion al reanudar")
+========================================================================

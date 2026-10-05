@@ -1,0 +1,5 @@
+# Automatizacion de Office/Outlook por COM (solo Windows)
+pywin32>=306
+
+# Movimiento de raton, rueda y Alt+Tab
+pyautogui>=0.9.54

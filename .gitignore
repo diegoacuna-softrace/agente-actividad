@@ -1,0 +1,36 @@
+# Entorno virtual de Python
+.venv/
+venv/
+env/
+
+# Cache de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Artefactos de empaquetado y build (se generan con empaquetar.ps1)
+dist/
+build/
+*.zip
+vendor/
+
+# Instalador de Python: binario grande, se descarga aparte (ver README)
+python-*.msix
+python-*.exe
+python-*.msi
+
+# Logs y archivos de control que crea el agente al ejecutarse
+logs/
+*.log
+.trabajo_activo.json
+DETENER.txt
+DETENER-PANTALLA.txt
+
+# Carpeta de trabajo del agente, por si se genera dentro del repo
+AgenteActividad/
+
+# Basura del sistema / editor
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

@@ -1,0 +1,134 @@
+{
+  "_comentario": "Configuracion del agente de actividad. Las claves que empiezan con _ se ignoran.",
+
+  "jornada": {
+    "_comentario": "La hora de inicio se sortea entre inicio_min e inicio_max, y la de fin entre fin_min y fin_max, distinta cada dia. dias: 0=lunes ... 6=domingo (aqui, solo laborables).",
+    "inicio_min": "08:00",
+    "inicio_max": "09:00",
+    "fin_min": "17:00",
+    "fin_max": "18:00",
+    "dias": [0, 1, 2, 3, 4]
+  },
+
+  "almuerzo": {
+    "activo": true,
+    "desde": "12:30",
+    "hasta": "13:30",
+    "duracion_min": 45,
+    "duracion_max": 75
+  },
+
+  "ritmo": {
+    "_comentario": "acciones grandes por dia, separacion minima y cadencia de los latidos (minutos). latido_min/max controlan cada cuanto se mueve el raton: 1 y 2 = aprox. una vez por minuto.",
+    "acciones_min": 36,
+    "acciones_max": 54,
+    "separacion_minutos": 3,
+    "latido_min": 1,
+    "latido_max": 2
+  },
+
+  "comportamiento": {
+    "_comentario": "respetar_usuario aplaza cualquier accion que robe el foco si detecta actividad humana",
+    "apps_visibles": true,
+    "respetar_usuario": true,
+    "umbral_usuario_seg": 120,
+    "aplazar_min": 4,
+    "aplazar_max": 12,
+    "max_aplazamientos": 3,
+    "cerrar_apps": true,
+    "_despierto": "Pide a Windows no apagar la pantalla ni suspender mientras corre. Refuerza los movimientos de raton; no desbloquea una pantalla ya bloqueada",
+    "mantener_despierto": true,
+    "_energia": "Pone el plan de energia en 'nunca apagar pantalla ni suspender' con powercfg. Es lo unico fiable en equipos con Modern Standby. Al desinstalar se restaura",
+    "forzar_energia": true,
+    "_evita_bloqueo": "La vigilia 24/7 pulsa F15 (tecla inofensiva) fuera del horario laboral para que el equipo no se bloquee por inactividad",
+    "vigilia_evita_bloqueo": true,
+    "_cierre": "Que se cierra a la hora de fin: ninguno | agente (solo lo que abrio el agente) | simular (como agente, y registra lo que cerraria 'todas') | todas (cierra todas las aplicaciones abiertas)",
+    "modo_cierre": "todas",
+    "_forzar": "true: lo que no cierre por las buenas (pide guardar, esta colgado o se esconde en la bandeja) se termina SIN GUARDAR. false: se deja abierto",
+    "forzar_cierre": true,
+    "_espera": "Minutos que el cierre total espera si alguien esta usando el equipo. Con forzar_cierre, pasado ese tiempo cierra igual; sin forzar, renuncia",
+    "espera_usuario_min": 5,
+    "_navegador": "Solo aplica en los modos agente y simular: incluir el navegador que abrio el propio agente",
+    "cerrar_navegador": false
+  },
+
+  "navegador": {
+    "_comentario": "Solo se abren URLs http/https de esta lista, elegidas al azar. Cualquier Windows trae Edge. Agrega o quita las que quieras.",
+    "activo": true,
+    "urls": [
+      "https://docs.oracle.com/en/database/oracle/oracle-database/",
+      "https://docs.oracle.com/en/database/oracle/apex/",
+      "https://apex.oracle.com/es/",
+      "https://asktom.oracle.com/",
+      "https://forums.oracle.com/ords/apexds/domain/apex",
+      "https://www.google.com/search?q=oracle+apex+24.2+interactive+grid",
+      "https://www.google.com/search?q=pl+sql+bulk+collect+forall",
+      "https://www.google.com/search?q=oracle+apex+authorization+scheme",
+      "https://www.google.com/search?q=oracle+pl+sql+ora-01422+solucion",
+      "https://www.google.com/search?q=oracle+apex+cargas+masivas+csv",
+      "https://stackoverflow.com/search?q=oracle+apex+interactive+grid+validation",
+      "https://stackoverflow.com/search?q=pl+sql+raise_application_error",
+      "https://stackoverflow.com/",
+      "https://www.w3schools.com/sql/",
+      "https://developer.mozilla.org/es/",
+      "https://www.google.com/search?q=sql+group+by+having+diferencia",
+      "https://www.google.com/search?q=indicadores+logisticos+kpi",
+      "https://es.wikipedia.org/wiki/Gesti%C3%B3n_de_inventarios",
+      "https://es.wikipedia.org/wiki/Cadena_de_suministro",
+      "https://es.wikipedia.org/wiki/Log%C3%ADstica",
+      "https://www.google.com/search?q=rotacion+de+inventario+formula",
+      "https://www.google.com/search?q=clasificacion+abc+inventario",
+      "https://www.google.com/search?q=conciliacion+de+inventario+buenas+practicas",
+      "https://www.google.com/search?q=trazabilidad+de+materiales+bodega",
+      "https://www.google.com/search?q=gestion+de+bodegas+satelite",
+      "https://www.google.com/search?q=control+de+existencias+faltantes+sobrantes",
+      "https://www.google.com/search?q=material+serializado+vs+no+serializado",
+      "https://www.google.com/search?q=sap+ibp+integration+sftp",
+      "https://help.sap.com/docs/SAP_INTEGRATED_BUSINESS_PLANNING",
+      "https://www.google.com/search?q=sftp+carga+masiva+de+archivos",
+      "https://support.microsoft.com/es-es/excel",
+      "https://www.google.com/search?q=excel+buscarv+vs+indice+coincidir",
+      "https://www.google.com/search?q=excel+tablas+dinamicas+ejemplos",
+      "https://www.google.com/search?q=power+query+combinar+consultas",
+      "https://www.google.com/search?q=excel+formato+condicional+avanzado",
+      "https://www.google.com/search?q=colombia+dian+facturacion+electronica",
+      "https://www.google.com/search?q=consulta+nit+rut+empresa",
+      "https://www.google.com/search?q=regionales+colombia+bogota+antioquia+valle+costa",
+      "https://news.google.com/",
+      "https://www.bing.com/search?q=productividad+laboral+tips",
+      "https://www.bing.com/search?q=gestion+de+almacenes+wms",
+      "https://duckduckgo.com/?q=buenas+practicas+inventario+ciclico",
+      "https://duckduckgo.com/?q=kpi+cadena+de+suministro",
+      "https://www.google.com/search?q=atajos+de+teclado+windows+11",
+      "https://support.microsoft.com/es-es/windows"
+    ]
+  },
+
+  "carpeta_trabajo": "~/AgenteActividad",
+  "carpeta_logs": "logs",
+
+  "_pesos": "Peso relativo de cada accion. 0 la desactiva por completo. Las de categoria nativa (notas, csv, organizar, explorador, aplicaciones) funcionan sin Office; en un equipo con Office puedes bajarles el peso.",
+  "pesos": {
+    "word_redactar_notas": 12,
+    "word_revisar_documento": 6,
+    "excel_actualizar_hoja": 14,
+    "excel_revisar_tablero": 7,
+    "powerpoint_avance_presentacion": 6,
+    "bitacora_bloc_notas": 9,
+    "notepad_escribir": 14,
+    "paint_dibujar": 10,
+    "calculadora_operar": 8,
+    "abrir_carpeta_trabajo": 5,
+    "navegador_consulta": 18,
+    "notas_tematicas": 12,
+    "csv_informe_actualizar": 12,
+    "organizar_archivos": 7,
+    "explorador_revisar_archivo": 6,
+
+    "raton_movimiento": 80,
+    "rueda_scroll": 16,
+    "cambiar_ventana": 4
+  },
+
+  "semilla": null
+}
